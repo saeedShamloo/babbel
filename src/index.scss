@@ -1,0 +1,167 @@
+@use "sass:map";
+
+$space: 8px;
+$animation-duration: 200ms;
+$font-size: 1rem;
+$colors: (
+  "success-dark": #247938,
+  "success": #2c8d42,
+  "successLight": #d4edda,
+  "btn-bg": #0d6efd,
+  "btn-bg-active": #0e5ed6,
+  "info": #159aae,
+  "white": #fff,
+  "text": #3d3e42,
+  "gray10": #f1f1f4,
+  "gray20": #d4d4d486,
+  "gray80": #6f7077,
+);
+
+/*
+* In order to simplicity, all classes such as utility classes, classes related to base components
+* and also classess related to business of the game, all of them have been written in this file.
+*/
+
+html,
+body,
+* {
+  padding: 0;
+  margin: 0;
+  color: map.get($colors, "text");
+  font-family: "Roboto", sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+// utility classes
+.full-width {
+  display: block;
+  width: 100%;
+}
+
+// button component
+.btn {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  padding: $space * 1;
+  border-radius: $space / 2;
+  transition: background-color $animation-duration;
+}
+
+.btn.btn-primary {
+  background-color: map.get($colors, "btn-bg");
+  color: map.get($colors, "white");
+}
+
+.btn-primary:not(:disabled):hover {
+  background-color: map.get($colors, "btn-bg-active");
+}
+
+.btn.btn-success {
+  background-color: map.get($colors, "success");
+  color: map.get($colors, "white");
+  border: 1px solid map.get($colors, "successLight");
+}
+
+.btn-success:not(:disabled):hover {
+  background-color: map.get($colors, "success-dark");
+}
+
+.btn:focus {
+  outline: 2px solid map.get($colors, "text");
+}
+
+.btn:disabled {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+// card component
+.card {
+  border: 1px solid map.get($colors, "gray20");
+  border-radius: $space / 4;
+  padding: $space * 2;
+}
+
+.card .card-title {
+  text-align: center;
+  margin-bottom: $space;
+}
+
+.card .card-avatar {
+  background-color: map.get($colors, "gray20");
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.card-content {
+  margin: $space * 2 0;
+  text-align: center;
+}
+
+// alert component
+.alert {
+  padding: $space * 2;
+  border-radius: $space / 2;
+  margin-top: $space * 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $font-size + 0.2;
+  border: 1px solid map.get($colors, "gray20");
+  background-color: map.get($colors, "white");
+}
+
+.alert-success {
+  color: map.get($colors, "success");
+  background-color: map.get($colors, "successLight");
+}
+
+// typography
+.title {
+  font-size: $font-size + 1.2;
+  line-height: 2;
+}
+
+.subtitle {
+  font-size: $font-size + 0.4;
+  line-height: 1.5;
+}
+
+.paragraph {
+  font-size: $font-size + 0.1;
+  line-height: 1.25;
+}
+
+.label {
+  font-size: $font-size - 0.1;
+  line-height: 1;
+}
+
+// game
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  padding: $space * 4;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.game .players {
+  display: flex;
+  flex-direction: row;
+  gap: $space * 2;
+  justify-content: center;
+  margin-top: $space * 3;
+}
+
+.game > .label {
+  display: block;
+  text-align: right;
+}
